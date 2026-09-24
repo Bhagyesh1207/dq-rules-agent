@@ -1,0 +1,35 @@
+FAIL  table.row_count                          warning  200 rows, e.g. [200]
+PASS  table.no_duplicate_rows                  error   
+PASS  customer_id.not_null                     error   
+FAIL  customer_id.unique                       error    2 rows, e.g. ['CUST-100311', 'CUST-100311']
+PASS  customer_id.pattern_alnum_code           error   
+PASS  customer_id.fixed_length                 warning 
+FAIL  email.not_null                           error    1 rows, e.g. ['<null>']
+PASS  email.unique                             error   
+FAIL  email.pattern_email                      error    1 rows, e.g. ['not-an-email']
+PASS  signup_date.not_null                     error   
+FAIL  signup_date.type                         error    1 rows, e.g. ['2031-02-30']
+PASS  signup_date.not_in_future                error   
+PASS  signup_date.date_floor                   warning 
+PASS  city.not_null                            error   
+FAIL  city.allowed_values                      error    1 rows, e.g. [' Toronto']
+PASS  city.length                              warning 
+PASS  postal_code.not_null                     error   
+PASS  postal_code.unique                       error   
+FAIL  postal_code.pattern_ca_postal_code       error    1 rows, e.g. ['12345']
+FAIL  postal_code.fixed_length                 warning  1 rows, e.g. ['12345']
+PASS  plan.not_null                            error   
+FAIL  plan.allowed_values                      error    1 rows, e.g. ['enterprise']
+FAIL  plan.length                              warning  1 rows, e.g. ['enterprise']
+PASS  monthly_spend.max_null_rate              warning 
+PASS  monthly_spend.type                       error   
+FAIL  monthly_spend.non_negative               error    1 rows, e.g. ['-40.0']
+FAIL  monthly_spend.expected_range             warning  2 rows, e.g. ['-40.0', '9999.0']
+PASS  orders_last_90d.not_null                 error   
+PASS  orders_last_90d.type                     error   
+FAIL  orders_last_90d.non_negative             error    1 rows, e.g. ['-2']
+FAIL  orders_last_90d.expected_range           warning  1 rows, e.g. ['-2']
+PASS  is_active.not_null                       error   
+PASS  is_active.type                           error   
+
+19/33 rules passed, 9 error-level failures
