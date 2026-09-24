@@ -1,0 +1,406 @@
+{
+  "expectation_suite_name": "customers_suite",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "min_value": 250,
+        "max_value": 1000
+      },
+      "meta": {
+        "rule_id": "table.row_count",
+        "severity": "warning",
+        "rationale": "Current load has 500 rows; flag loads under half or over double that."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {
+        "rule_id": "customer_id.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "customer_id"
+      },
+      "meta": {
+        "rule_id": "customer_id.unique",
+        "severity": "error",
+        "rationale": "All 500 non-null values are distinct and the name looks like a key."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "customer_id",
+        "regex": "^[A-Z]{2,5}-?\\d{2,8}$"
+      },
+      "meta": {
+        "rule_id": "customer_id.pattern_alnum_code",
+        "severity": "error",
+        "rationale": "100.0% of values match the alnum_code pattern."
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "customer_id",
+        "min_value": 11,
+        "max_value": 11
+      },
+      "meta": {
+        "rule_id": "customer_id.fixed_length",
+        "severity": "warning",
+        "rationale": "Every value is exactly 11 characters."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "email"
+      },
+      "meta": {
+        "rule_id": "email.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "email"
+      },
+      "meta": {
+        "rule_id": "email.unique",
+        "severity": "error",
+        "rationale": "All 500 non-null values are distinct."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "email",
+        "regex": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+      },
+      "meta": {
+        "rule_id": "email.pattern_email",
+        "severity": "error",
+        "rationale": "100.0% of values match the email pattern."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "signup_date"
+      },
+      "meta": {
+        "rule_id": "signup_date.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_type_list",
+      "kwargs": {
+        "column": "signup_date",
+        "type_list": [
+          "datetime64[ns]",
+          "TIMESTAMP",
+          "DATE"
+        ]
+      },
+      "meta": {
+        "rule_id": "signup_date.type",
+        "severity": "error",
+        "rationale": "Profiler inferred 'datetime' for all non-null values."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "signup_date",
+        "min_value": "2024-01-01"
+      },
+      "meta": {
+        "rule_id": "signup_date.date_floor",
+        "severity": "warning",
+        "rationale": "Earliest value is 2024-01-01."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "city"
+      },
+      "meta": {
+        "rule_id": "city.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "city",
+        "value_set": [
+          "Brampton",
+          "Markham",
+          "Mississauga",
+          "Oakville",
+          "Toronto",
+          "Vaughan"
+        ]
+      },
+      "meta": {
+        "rule_id": "city.allowed_values",
+        "severity": "error",
+        "rationale": "Only 6 distinct values in 500 rows; treat as a closed list."
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "city",
+        "min_value": 7,
+        "max_value": 11
+      },
+      "meta": {
+        "rule_id": "city.length",
+        "severity": "warning",
+        "rationale": "Lengths range from 7 to 11."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "postal_code"
+      },
+      "meta": {
+        "rule_id": "postal_code.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "postal_code"
+      },
+      "meta": {
+        "rule_id": "postal_code.unique",
+        "severity": "error",
+        "rationale": "All 500 non-null values are distinct and the name looks like a key."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "postal_code",
+        "regex": "^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$"
+      },
+      "meta": {
+        "rule_id": "postal_code.pattern_ca_postal_code",
+        "severity": "error",
+        "rationale": "100.0% of values match the ca_postal_code pattern."
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "postal_code",
+        "min_value": 7,
+        "max_value": 7
+      },
+      "meta": {
+        "rule_id": "postal_code.fixed_length",
+        "severity": "warning",
+        "rationale": "Every value is exactly 7 characters."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "plan"
+      },
+      "meta": {
+        "rule_id": "plan.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "plan",
+        "value_set": [
+          "basic",
+          "plus",
+          "pro"
+        ]
+      },
+      "meta": {
+        "rule_id": "plan.allowed_values",
+        "severity": "error",
+        "rationale": "Only 3 distinct values in 500 rows; treat as a closed list."
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "plan",
+        "min_value": 3,
+        "max_value": 5
+      },
+      "meta": {
+        "rule_id": "plan.length",
+        "severity": "warning",
+        "rationale": "Lengths range from 3 to 5."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "monthly_spend",
+        "mostly": 0.96
+      },
+      "meta": {
+        "rule_id": "monthly_spend.max_null_rate",
+        "severity": "warning",
+        "rationale": "2.4% null today; alert if it rises above 4%."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_type_list",
+      "kwargs": {
+        "column": "monthly_spend",
+        "type_list": [
+          "float",
+          "float64",
+          "Float64",
+          "DOUBLE",
+          "NUMERIC"
+        ]
+      },
+      "meta": {
+        "rule_id": "monthly_spend.type",
+        "severity": "error",
+        "rationale": "Profiler inferred 'float' for all non-null values."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "monthly_spend",
+        "min_value": 0
+      },
+      "meta": {
+        "rule_id": "monthly_spend.non_negative",
+        "severity": "error",
+        "rationale": "No negative values across 488 rows (min 3.5)."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "monthly_spend",
+        "min_value": 0.0,
+        "max_value": 300
+      },
+      "meta": {
+        "rule_id": "monthly_spend.expected_range",
+        "severity": "warning",
+        "rationale": "Observed 3.5 to 182.84 (median 55.16, 9 IQR outliers). Values outside 0 to 300 need review."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "orders_last_90d"
+      },
+      "meta": {
+        "rule_id": "orders_last_90d.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_type_list",
+      "kwargs": {
+        "column": "orders_last_90d",
+        "type_list": [
+          "int",
+          "int64",
+          "Int64",
+          "INTEGER",
+          "BIGINT"
+        ]
+      },
+      "meta": {
+        "rule_id": "orders_last_90d.type",
+        "severity": "error",
+        "rationale": "Profiler inferred 'integer' for all non-null values."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "orders_last_90d",
+        "min_value": 0
+      },
+      "meta": {
+        "rule_id": "orders_last_90d.non_negative",
+        "severity": "error",
+        "rationale": "No negative values across 500 rows (min 0)."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "orders_last_90d",
+        "min_value": 0.0,
+        "max_value": 20
+      },
+      "meta": {
+        "rule_id": "orders_last_90d.expected_range",
+        "severity": "warning",
+        "rationale": "Observed 0 to 15 (median 6, 9 IQR outliers). Values outside 0 to 20 need review."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "is_active"
+      },
+      "meta": {
+        "rule_id": "is_active.not_null",
+        "severity": "error",
+        "rationale": "0 of 500 rows are null."
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_type_list",
+      "kwargs": {
+        "column": "is_active",
+        "type_list": [
+          "bool",
+          "boolean",
+          "BOOLEAN"
+        ]
+      },
+      "meta": {
+        "rule_id": "is_active.type",
+        "severity": "error",
+        "rationale": "Profiler inferred 'boolean' for all non-null values."
+      }
+    }
+  ],
+  "meta": {
+    "generated_by": "dq-rules-agent"
+  }
+}
