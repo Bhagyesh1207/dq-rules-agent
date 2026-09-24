@@ -53,7 +53,7 @@ All 10 planted problems are caught:
 
 The generated pandera schema and SQL checks flag the same rows. See [`examples/output/`](examples/output) for every generated file, including [`report.md`](examples/output/report.md).
 
-![Validation results in the live demo](demo_validation.png)
+Want to see it without installing anything? Run the same two files in the [live demo](https://dq-rules-agent.vercel.app).
 
 ## How it saves time
 
