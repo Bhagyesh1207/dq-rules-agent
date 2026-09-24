@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DQ Rules Agent - live demo</title>
+<title>DQ Rule Generate - live demo</title>
 <meta name="description" content="Profile a CSV and generate data quality rules from the profile. Runs fully in your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -33,18 +33,18 @@ code,pre{font-family:"JetBrains Mono",monospace}pre{background:#111;color:#eee;p
 .kpis{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 14px}.kpi{border:2px solid var(--ink);border-radius:12px;padding:10px 14px;background:var(--bg)}
 .kpi b{display:block;font-family:Anton;font-size:30px}
 .hidden{display:none}footer{margin-top:40px;color:var(--mute);font-size:14px}footer a{color:var(--ink)}
-.flow{display:flex;align-items:stretch;gap:8px;margin:28px 0 10px}
-.node{flex:1;background:#fff;border:2px solid var(--ink);border-radius:14px;padding:14px 14px 12px;box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;gap:4px}
-.node b{font-family:Anton;font-size:24px;color:var(--red);line-height:1}.node span{font-weight:700;font-size:16px}.node small{color:var(--mute);font-size:13px;line-height:1.35}
-.node.hot{background:var(--red);color:#fff}.node.hot b{color:#fff}.node.hot small{color:#ffe4e1}
-.arr{align-self:center;flex:0 0 auto;display:flex}
-.nollm{font-size:15px;margin:14px 0 0}
+.flow{display:flex;align-items:center;gap:6px;margin:24px 0 8px;flex-wrap:nowrap}
+.node{flex:0 1 auto;background:#fff;border:2px solid var(--ink);border-radius:10px;padding:8px 12px;box-shadow:3px 3px 0 var(--ink);display:flex;align-items:baseline;gap:7px;white-space:nowrap}
+.node b{font-family:Anton;font-size:16px;color:var(--red);line-height:1}.node span{font-weight:700;font-size:14px}.node small{display:none}
+.node.hot{background:var(--red);color:#fff}.node.hot b{color:#fff}
+.arr{flex:0 0 auto;display:flex}.arr svg{width:26px;height:16px}
+.nollm{font-size:15px;margin:12px 0 0}
 #tRules td:nth-child(3){word-break:break-all}#tRules td:last-child{min-width:200px}
-@media(max-width:760px){.flow{flex-direction:column}.arr{transform:rotate(90deg);align-self:center}}
+@media(max-width:760px){.flow{flex-direction:column;align-items:flex-start;gap:2px}.node{padding:6px 10px}.arr{transform:rotate(90deg);margin-left:14px}.arr svg{width:18px;height:12px}}
 @media(max-width:760px){.steps{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
 <nav><div>DQ Rules Agent</div><div><a href="https://github.com/Bhagyesh1207/dq-rules-agent">GitHub</a><a href="https://itsbhagyesh.vercel.app">Bhagyesh Patel</a></div></nav>
-<h1>Profile.<br><span>Generate rules.</span></h1>
+<h1>DQ Rule<br><span>Generate.</span></h1>
 <p class="tag">Data quality, automated</p>
 <div class="flow" aria-label="How it works">
  <div class="node"><b>01</b><span>Upload a CSV</span><small>the data you trust</small></div><div class="arr"><svg viewBox="0 0 40 24" width="40" height="24"><path d="M2 12h28M22 3l10 9-10 9" fill="none" stroke="#ff3b2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
