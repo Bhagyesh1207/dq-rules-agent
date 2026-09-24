@@ -1,0 +1,362 @@
+[
+  {
+    "rule_id": "table.row_count",
+    "column": null,
+    "check": "row_count_between",
+    "params": {
+      "min": 250,
+      "max": 1000
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Current load has 500 rows; flag loads under half or over double that."
+  },
+  {
+    "rule_id": "table.no_duplicate_rows",
+    "column": null,
+    "check": "no_duplicate_rows",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 fully duplicated rows found."
+  },
+  {
+    "rule_id": "customer_id.not_null",
+    "column": "customer_id",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "customer_id.unique",
+    "column": "customer_id",
+    "check": "unique",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "All 500 non-null values are distinct and the name looks like a key."
+  },
+  {
+    "rule_id": "customer_id.pattern_alnum_code",
+    "column": "customer_id",
+    "check": "regex",
+    "params": {
+      "pattern": "^[A-Z]{2,5}-?\\d{2,8}$",
+      "name": "alnum_code"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "100.0% of values match the alnum_code pattern."
+  },
+  {
+    "rule_id": "customer_id.fixed_length",
+    "column": "customer_id",
+    "check": "length",
+    "params": {
+      "min": 11,
+      "max": 11
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Every value is exactly 11 characters."
+  },
+  {
+    "rule_id": "email.not_null",
+    "column": "email",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "email.unique",
+    "column": "email",
+    "check": "unique",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "All 500 non-null values are distinct."
+  },
+  {
+    "rule_id": "email.pattern_email",
+    "column": "email",
+    "check": "regex",
+    "params": {
+      "pattern": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
+      "name": "email"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "100.0% of values match the email pattern."
+  },
+  {
+    "rule_id": "signup_date.not_null",
+    "column": "signup_date",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "signup_date.type",
+    "column": "signup_date",
+    "check": "type",
+    "params": {
+      "kind": "datetime"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Profiler inferred 'datetime' for all non-null values."
+  },
+  {
+    "rule_id": "signup_date.not_in_future",
+    "column": "signup_date",
+    "check": "date_not_after",
+    "params": {
+      "max": "today"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Latest value is 2025-05-14; no future dates seen."
+  },
+  {
+    "rule_id": "signup_date.date_floor",
+    "column": "signup_date",
+    "check": "date_not_before",
+    "params": {
+      "min": "2024-01-01"
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Earliest value is 2024-01-01."
+  },
+  {
+    "rule_id": "city.not_null",
+    "column": "city",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "city.allowed_values",
+    "column": "city",
+    "check": "in_set",
+    "params": {
+      "values": [
+        "Brampton",
+        "Markham",
+        "Mississauga",
+        "Oakville",
+        "Toronto",
+        "Vaughan"
+      ]
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Only 6 distinct values in 500 rows; treat as a closed list."
+  },
+  {
+    "rule_id": "city.length",
+    "column": "city",
+    "check": "length",
+    "params": {
+      "min": 7,
+      "max": 11
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Lengths range from 7 to 11."
+  },
+  {
+    "rule_id": "postal_code.not_null",
+    "column": "postal_code",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "postal_code.unique",
+    "column": "postal_code",
+    "check": "unique",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "All 500 non-null values are distinct and the name looks like a key."
+  },
+  {
+    "rule_id": "postal_code.pattern_ca_postal_code",
+    "column": "postal_code",
+    "check": "regex",
+    "params": {
+      "pattern": "^[A-Za-z]\\d[A-Za-z][ -]?\\d[A-Za-z]\\d$",
+      "name": "ca_postal_code"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "100.0% of values match the ca_postal_code pattern."
+  },
+  {
+    "rule_id": "postal_code.fixed_length",
+    "column": "postal_code",
+    "check": "length",
+    "params": {
+      "min": 7,
+      "max": 7
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Every value is exactly 7 characters."
+  },
+  {
+    "rule_id": "plan.not_null",
+    "column": "plan",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "plan.allowed_values",
+    "column": "plan",
+    "check": "in_set",
+    "params": {
+      "values": [
+        "basic",
+        "plus",
+        "pro"
+      ]
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Only 3 distinct values in 500 rows; treat as a closed list."
+  },
+  {
+    "rule_id": "plan.length",
+    "column": "plan",
+    "check": "length",
+    "params": {
+      "min": 3,
+      "max": 5
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Lengths range from 3 to 5."
+  },
+  {
+    "rule_id": "monthly_spend.max_null_rate",
+    "column": "monthly_spend",
+    "check": "max_null_rate",
+    "params": {
+      "max_rate": 0.04
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "2.4% null today; alert if it rises above 4%."
+  },
+  {
+    "rule_id": "monthly_spend.type",
+    "column": "monthly_spend",
+    "check": "type",
+    "params": {
+      "kind": "float"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Profiler inferred 'float' for all non-null values."
+  },
+  {
+    "rule_id": "monthly_spend.non_negative",
+    "column": "monthly_spend",
+    "check": "between",
+    "params": {
+      "min": 0
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "No negative values across 488 rows (min 3.5)."
+  },
+  {
+    "rule_id": "monthly_spend.expected_range",
+    "column": "monthly_spend",
+    "check": "between",
+    "params": {
+      "min": 0.0,
+      "max": 300
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Observed 3.5 to 182.84 (median 55.16, 9 IQR outliers). Values outside 0 to 300 need review."
+  },
+  {
+    "rule_id": "orders_last_90d.not_null",
+    "column": "orders_last_90d",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "orders_last_90d.type",
+    "column": "orders_last_90d",
+    "check": "type",
+    "params": {
+      "kind": "integer"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Profiler inferred 'integer' for all non-null values."
+  },
+  {
+    "rule_id": "orders_last_90d.non_negative",
+    "column": "orders_last_90d",
+    "check": "between",
+    "params": {
+      "min": 0
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "No negative values across 500 rows (min 0)."
+  },
+  {
+    "rule_id": "orders_last_90d.expected_range",
+    "column": "orders_last_90d",
+    "check": "between",
+    "params": {
+      "min": 0.0,
+      "max": 20
+    },
+    "severity": "warning",
+    "confidence": 1.0,
+    "rationale": "Observed 0 to 15 (median 6, 9 IQR outliers). Values outside 0 to 20 need review."
+  },
+  {
+    "rule_id": "is_active.not_null",
+    "column": "is_active",
+    "check": "not_null",
+    "params": {},
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "0 of 500 rows are null."
+  },
+  {
+    "rule_id": "is_active.type",
+    "column": "is_active",
+    "check": "type",
+    "params": {
+      "kind": "boolean"
+    },
+    "severity": "error",
+    "confidence": 1.0,
+    "rationale": "Profiler inferred 'boolean' for all non-null values."
+  }
+]
