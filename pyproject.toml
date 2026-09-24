@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dq-rules-agent"
+version = "0.1.0"
+description = "Profile a dataset and generate data quality rules from the profile, exported to Great Expectations, pandera and SQL."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Bhagyesh Patel" }]
+dependencies = ["pandas>=1.5"]
+
+[project.optional-dependencies]
+dev = ["pytest", "pandera", "duckdb"]
+
+[project.scripts]
+dq-rules = "dq_rules_agent.cli:main"
+
+[tool.setuptools]
+packages = ["dq_rules_agent"]
