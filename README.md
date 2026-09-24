@@ -1,4 +1,11 @@
-# DQ Rules Agent
+# 🛡️ DQ Rules Agent
+
+<p>
+  <a href="https://dq-rules-agent.vercel.app"><img src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-dq--rules--agent.vercel.app-FF3B2F?style=for-the-badge" alt="Live demo" /></a>
+  <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.9+" />
+  <img src="https://img.shields.io/badge/LLM-not%20required-2EA44F?style=for-the-badge" alt="No LLM required" />
+  <img src="https://img.shields.io/badge/License-MIT-555?style=for-the-badge" alt="MIT license" />
+</p>
 
 **Profile a dataset. Get data quality rules back, each with a reason. Export them as real checks.**
 
